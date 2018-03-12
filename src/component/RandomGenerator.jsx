@@ -24,6 +24,11 @@ class RandomGenerator extends Component {
         } ;
     }
 
+    handleSound = sound => {
+        this.sound = new Audio(sound);
+        this.sound.play();
+    }
+
 
     render() {
         const confettiConfig = {
@@ -53,9 +58,10 @@ class RandomGenerator extends Component {
                     }
                     </li>
                 </ul>
-                <div>
-                    <button type='button' onClick={this.handleSound}>Play Sound</button>
-                    <button type='button'><Link to='/'>Quit</Link></button>
+                <audio src={correct.sound} autoPlay></audio>
+                <div id='randombuttons'>
+                    <button type='button' className='randoms' onClick={() => this.handleSound(correct.sound)}>Play Sound</button>
+                    <button type='button' className='randoms'><Link to='/' style={{ textDecoration: 'none', color: 'white' }}>Quit</Link></button>
                 </div>
                 <Confetti active={this.state.completed} config={ confettiConfig }/> 
             </div>

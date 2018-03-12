@@ -107,3 +107,81 @@
   padding-bottom: 80px;
 }
 
+#shapebuttons {
+  display: flex;
+  justify-content: center;
+  margin-left: 150px;
+}
+
+.shapes {
+  background-color: pink;
+  border-radius: 50%;
+  padding: 30px;
+  margin: 10px;
+  font-size: 40px;
+  color: white;
+  
+}
+
+.shapes:hover {
+  background-color: lightblue;
+  text-decoration: none;
+}
+
+#abcbuttons {
+  display: flex;
+  justify-content: center;
+  margin-left: 150px;
+}
+
+.abc {
+  background-color: pink;
+  border-radius: 50%;
+  padding: 30px;
+  margin: 10px;
+  font-size: 40px;
+  color: white;
+}
+
+.abc:hover {
+  background-color: lightblue;
+}
+
+#numbuttons {
+  display: flex;
+  justify-content: center;
+  margin-left: 150px;
+}
+
+.num {
+  background-color: pink;
+  border-radius: 50%;
+  padding: 30px;
+  margin: 10px;
+  font-size: 40px;
+  color: white;
+}
+
+.num:hover {
+  background-color: lightblue;
+}
+
+
+#randombuttons {
+  display: flex;
+  justify-content: center;
+}
+
+.randoms {
+  background-color: pink;
+  border-radius: 50%;
+  padding: 50px;
+  margin: 10px;
+  font-size: 40px;
+  color: white;
+}
+
+.randoms:hover {
+  background-color: lightblue;
+}
+

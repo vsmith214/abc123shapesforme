@@ -6,9 +6,9 @@ const HappyLearning = () => {
         <div>
             <h1 className='header'>Happy Learning</h1>
             <div className='menubuttons'>
-                <button type='button' className='btn' id='menu'><Link to='/abc'>Learn ABC's</Link></button>
-                <button type='button' className='btn'id='menu'><Link to='/numbers'>Learn Numbers</Link></button>
-                <button type='button' className='btn'id='menu'><Link to='/shapes'>Learn Shapes</Link></button>
+                <button type='button' className='btn' id='menu'><Link to='/abc' style={{ textDecoration: 'none', color: 'white' }}>Learn ABC's</Link></button>
+                <button type='button' className='btn'id='menu'><Link to='/numbers' style={{ textDecoration: 'none', color: 'white' }}>Learn Numbers</Link></button>
+                <button type='button' className='btn'id='menu'><Link to='/shapes' style={{ textDecoration: 'none', color: 'white' }}>Learn Shapes</Link></button>
             </div>
         </div>
     )

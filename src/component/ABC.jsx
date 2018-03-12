@@ -32,19 +32,21 @@ class ABC extends Component {
                 { !showComp ?
                     <div className='random'>
                         <img src={random.img} alt={random.value} sound={random.sound} />
-                        <audio src={random.sound}></audio>
+                        <audio src={random.sound} autoPlay></audio>
                     </div> :
                     <div>
                          <RandomGenerator array={letters} display={false} />
                     </div>
                 }
 
-                <div className='buttons'>
-                    <button type='button' className='btn' onClick={this.handleClick}>Randomize</button>
-                    <button type='button' className='btn' onClick={() => this.handleSound(random.sound)}>Play Sound</button>
-                    <button type='button' className='btn' onClick={this.handleNext}>Next</button> 
-                    <button type='button' className='btn'><Link to='/'>Quit</Link></button>
+                { !showComp &&
+                <div id='abcbuttons'>
+                    <button type='button' className='abc' onClick={this.handleClick}>Randomize</button>
+                    <button type='button' className='abc' onClick={() => this.handleSound(random.sound)}>Play Sound</button>
+                    <button type='button' className='abc' onClick={this.handleNext}>Next</button> 
+                    <button type='button' className='abc'><Link to='/' style={{ textDecoration: 'none', color: 'white' }}>Quit</Link></button>
                 </div>
+                }
             </div>
         )
     }

@@ -32,19 +32,21 @@ class Numbers extends Component {
                 { !showComp ?
                     <div className='random'>
                         <img src={random.img} alt={random.id} sound={random.sound} />
-                        <audio src={random.sound}></audio>
+                        <audio src={random.sound} autoPlay></audio>
                     </div> :
                     <div>
                         <RandomGenerator array={numbers} />
                     </div>
                 }
     
-                <div className='buttons'>
-                    <button type='button' className='btn' onClick={this.handleClick}>Randomize</button>
-                    <button type='button' className='btn' onClick={() => this.handleSound(random.sound)}>Play Sound</button>
-                    <button type='button' className='btn' onClick={this.handleNext}>Next</button> 
-                    <button type='button' className='btn'><Link to='/'>Quit</Link></button>
+                { !showComp && 
+                <div id='numbuttons'>
+                    <button type='button' className='num' onClick={this.handleClick}>Randomize</button>
+                    <button type='button' className='num' onClick={() => this.handleSound(random.sound)}>Play Sound</button>
+                    <button type='button' className='num' onClick={this.handleNext}>Next</button> 
+                    <button type='button' className='num'><Link to='/' style={{ textDecoration: 'none', color: 'white' }}>Quit</Link></button>
                 </div>
+                }
             </div>
         )
     }
