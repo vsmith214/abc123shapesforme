@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import RandomGenerator from './RandomGenerator.jsx';
 import { shapes } from './data';
-import Sound from 'react-sound';
+import { Link } from 'react-router-dom';
 
 class Shapes extends Component {
     state = { showComp: false }
@@ -12,6 +12,11 @@ class Shapes extends Component {
     
     handleNext = () => {
         this.forceUpdate();
+    }
+
+    handleSound = sound => {
+        this.sound = new Audio(sound);
+        this.sound.play();
     }
     
     
@@ -27,6 +32,7 @@ class Shapes extends Component {
                 { !showComp ?
                     <div className='random'>
                         <img src={random.img} alt={random.id} />
+                        <audio src={random.sound}></audio>
                     </div> :
                     <div>
                         <RandomGenerator array={shapes} />
@@ -34,10 +40,10 @@ class Shapes extends Component {
                 }
     
                 <div className='buttons'>
-                    { !showComp && <button type='button' className='btn' onClick={this.handleClick}>Randomize</button>}
-                    <button type='button' className='btn' onClick={this.handleSound}>Play Sound</button>
-                    {!showComp && <button type='button' className='btn' onClick={this.handleNext}>Next</button> }
-                    { showComp && <button type='button' className='btn' onClick={this.handleClick}>Quit</button> }
+                    <button type='button' className='btn' onClick={this.handleClick}>Randomize</button>
+                    <button type='button' className='btn' onClick={() => this.handleSound(random.sound)}>Play Sound</button>
+                    <button type='button' className='btn' onClick={this.handleNext}>Next</button> 
+                    <button type='button' className='btn'><Link to='/'>Quit</Link></button>
                 </div>
             </div>
         )

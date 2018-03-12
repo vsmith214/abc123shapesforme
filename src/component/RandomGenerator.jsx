@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import Confetti from 'react-dom-confetti';
+import try_again from './sounds/try_again.mp3';
+import yay from './sounds/Yay.mp3';
+import { Link } from 'react-router-dom';
 
 
 
@@ -11,12 +14,13 @@ class RandomGenerator extends Component {
         if(evt.target.alt === correct.value) {
             //Ask john is there a better way to do this
             //set completed to true so confetti will render then reset 
+            this.sound = new Audio(yay);
+            this.sound.play();
             this.setState({ completed: true }, () => this.setState({ completed: false })); 
         }
         else {
-            //  this.props.display = true; 
-            <h1>"Try Again"</h1>        
-            console.log("Try Again");
+            this.sound = new Audio(try_again);
+            this.sound.play();
         } ;
     }
 
@@ -33,8 +37,6 @@ class RandomGenerator extends Component {
         const { array } = this.props;
         let randomArray = generateRandoms(array).map(index => array[index]);
         const correct = randomArray[Math.floor(Math.random() * randomArray.length)];
-        console.log("Random ARRAY OF 4 ", randomArray);
-        console.log("Correct ", correct);
 
         return (
             <div>
@@ -51,7 +53,10 @@ class RandomGenerator extends Component {
                     }
                     </li>
                 </ul>
-                { this.props.display && <h1>Try Again!!!</h1>}
+                <div>
+                    <button type='button' onClick={this.handleSound}>Play Sound</button>
+                    <button type='button'><Link to='/'>Quit</Link></button>
+                </div>
                 <Confetti active={this.state.completed} config={ confettiConfig }/> 
             </div>
         )

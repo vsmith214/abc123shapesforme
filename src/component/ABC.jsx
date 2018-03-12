@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { letters } from './data';
 import RandomGenerator from './RandomGenerator.jsx';
-import Sound from 'react-sound';
+import { Link } from 'react-router-dom';
 
 class ABC extends Component {
     state = { showComp: false }
@@ -14,8 +14,9 @@ class ABC extends Component {
         this.forceUpdate();
     }
 
-    handleSound = () => {
-        
+    handleSound = sound => {
+        this.sound = new Audio(sound);
+        this.sound.play();
     }
 
 
@@ -31,6 +32,7 @@ class ABC extends Component {
                 { !showComp ?
                     <div className='random'>
                         <img src={random.img} alt={random.value} sound={random.sound} />
+                        <audio src={random.sound}></audio>
                     </div> :
                     <div>
                          <RandomGenerator array={letters} display={false} />
@@ -38,18 +40,10 @@ class ABC extends Component {
                 }
 
                 <div className='buttons'>
-                    <div className='menu' >
-                        { !showComp && <button type='button' className='btn' onClick={this.handleClick}>Randomize</button>}
-                    </div>
-                    <div className='menu'>
-                        <button type='button' className='btn' onClick={this.handleSound}>Play Sound</button>
-                    </div>
-                    <div className='menu'>
-                        {!showComp && <button type='button' className='btn' onClick={this.handleNext}>Next</button> }
-                    </div>
-                        <div className='menu'>
-                    { showComp && <button type='button' className='btn' onClick={this.handleClick}>Quit</button> }
-                    </div>
+                    <button type='button' className='btn' onClick={this.handleClick}>Randomize</button>
+                    <button type='button' className='btn' onClick={() => this.handleSound(random.sound)}>Play Sound</button>
+                    <button type='button' className='btn' onClick={this.handleNext}>Next</button> 
+                    <button type='button' className='btn'><Link to='/'>Quit</Link></button>
                 </div>
             </div>
         )
